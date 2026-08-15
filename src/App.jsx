@@ -31,25 +31,22 @@ id : 1
 
 ]
 
-const [cart, setCart] = useState([])
 
-const addProduct = function (product){
-const existingProduct = cart.find((item) => item.id === product.id)
-existingProduct ? console.log("product exist") : console.log("product doesn't exiist");
-
-const updatedCart = cart.map((item) => {
-item.id === product.id ? [...item.quanity +=  1]: item
-})
-
-setCart([...cart,product])
+const [cartCount , setShowCount] = useState(0)
+function addProduct(){
+  setShowCount(cartCount + 1)
 }
+function removeProduct(){
+  setShowCount(cartCount - 1)
+}
+
 
   return (
 <>
 
  <Navbar 
-cartCount={cart.length}
 
+cartCount={cartCount}
   /> 
 
 {<section className="bg-gray-50 px-6 py-16">
@@ -76,8 +73,9 @@ cartCount={cart.length}
           name={item.name}
           price={item.price}
           category={item.category}
-          addProduct={addProduct}
           id={item.id}
+          addProduct={addProduct}
+          removeProduct={removeProduct}
         />
       ))}
     </div>
