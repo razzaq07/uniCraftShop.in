@@ -1,8 +1,10 @@
 import React from 'react'
 import ProductCard from '../ProductCard/ProductCard'
-function Navbar({cartCount}) {
-    const logo = ""
+import { useEffect } from 'react'
+function Navbar({cartCount, logoSrc}) {
+  
    const shopName = "uniCraftShop"
+ 
   return (
 
     <nav className="sticky top-0 z-50 border-b border-gray-200 bg-white">
@@ -10,9 +12,9 @@ function Navbar({cartCount}) {
 
     <div className="flex items-center gap-3">
       <img
-        src={logo}
-        alt="UniCraftShop logo"
-        className="h-10 w-10 rounded-lg object-cover"
+        src= {logoSrc}
+        alt="logo"
+        className="h-10 w-15 rounded-lg object-cover"
       />
 
       <h1 className="text-2xl font-bold text-gray-900 ">
@@ -33,13 +35,20 @@ function Navbar({cartCount}) {
         Categories
       </button>
 
-      <button className="rounded-lg px-4 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-100 hover:text-gray-900">
+      {cartCount == 0 ? (
+        <button className="rounded-lg px-4 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-100 hover:text-gray-900">
+        Cart 🛒 
+      </button>
+      ) : (
+        <button className="rounded-lg px-4 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-100 hover:text-gray-900">
         Cart 🛒 {cartCount}
       </button>
+      )}
 
       <button className="rounded-lg px-4 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-100 hover:text-gray-900">
         About
       </button>
+
     </div>
 
   </div>
