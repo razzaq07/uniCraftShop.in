@@ -32,19 +32,16 @@ function App() {
     }
   ]
 
-  const [cartCount, setShowCount] = useState(0)
+  const [cart, setCart] = useState([])
 
-  function addProduct() {
-    setShowCount(cartCount + 1)
+  function addProduct(product) {
+    setCart(prev=> [...cart,product])
   }
 
-  function removeProduct() {
-    setShowCount(cartCount - 1)
-  }
 
   useEffect(() => {
     console.log("cart Changes")
-  }, [cartCount])
+  }, [cart])
 
   // Controlled input state
   const [name, setName] = useState("")
@@ -53,11 +50,13 @@ function App() {
   const filteredProducts = products.filter((item) =>
     item.name.toLowerCase().includes(name.toLowerCase())
   )
+  
 
   return (
     <>
-      <Navbar cartCount={cartCount}
-      logoSrc={my_logo} />
+      <Navbar cart={cart}
+      logoSrc={my_logo}
+       />
               
     <ProductSection
   products={products}
@@ -65,7 +64,7 @@ function App() {
   setName={setName}
   filteredProducts={filteredProducts}
   addProduct={addProduct}
-  removeProduct={removeProduct}
+ 
   
 />
     

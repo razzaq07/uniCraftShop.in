@@ -1,7 +1,7 @@
 import React from 'react'
 import ProductCard from '../ProductCard/ProductCard'
 import { useEffect } from 'react'
-function Navbar({cartCount, logoSrc}) {
+function Navbar({cart, logoSrc}) {
   
    const shopName = "uniCraftShop"
  
@@ -35,13 +35,13 @@ function Navbar({cartCount, logoSrc}) {
         Categories
       </button>
 
-      {cartCount == 0 ? (
+      {cart.length == 0 ? (
         <button className="rounded-lg px-4 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-100 hover:text-gray-900">
         Cart 🛒 
       </button>
       ) : (
         <button className="rounded-lg px-4 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-100 hover:text-gray-900">
-        Cart 🛒 {cartCount}
+        Cart 🛒 {cart.length}
       </button>
       )}
 

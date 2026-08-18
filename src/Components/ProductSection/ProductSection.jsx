@@ -1,6 +1,6 @@
 import React from 'react'
 import ProductCard from '../ProductCard/ProductCard'
-function ProductSection({products, name, setName, filteredProducts, addProduct, removeProduct}) {
+function ProductSection({products, name, setName, filteredProducts, addProduct, productAdd}) {
   return (
     <div>
         <section className="bg-gray-50 px-6 py-16">
@@ -41,7 +41,7 @@ function ProductSection({products, name, setName, filteredProducts, addProduct, 
                 category={item.category}
                 id={item.id}
                 addProduct={addProduct}
-                removeProduct={removeProduct}
+                 
                 
               />
             ))) : <p className="col-span-full py-12 text-center text-lg font-medium text-gray-500">No product found!!</p> }

@@ -1,18 +1,24 @@
 import React, { useState } from 'react'
 
-function ProductCard({ imgSrc, name, price, category, addProduct, removeProduct, id }) {
+function ProductCard({ imgSrc, name, price, category, addProduct, removeProduct, id}) {
 
   const [quantity, setQuantity] = useState(0)
 
   function handleAdd() {
     setQuantity(prev => prev + 1)
-    addProduct()
+    addProduct({
+    id,
+    name,
+    price,
+    category,
+    imgSrc
+    })
   }
-
+ 
   function handleRemove() {
     if (quantity > 0) {
       setQuantity(prev => prev - 1)
-      removeProduct()
+      
     }
   }
 
@@ -43,7 +49,11 @@ function ProductCard({ imgSrc, name, price, category, addProduct, removeProduct,
 
           <button
             className="w-full rounded-xl bg-black px-4 py-3 font-medium text-white transition hover:bg-gray-800"
-            onClick={handleAdd}
+            onClick={() => {
+              handleAdd()
+             
+            }}
+            
           >
             Add to Cart
           </button>
